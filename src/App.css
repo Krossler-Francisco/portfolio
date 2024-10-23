@@ -1,0 +1,349 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #06060e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(111, 0, 255, 0.3);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(179, 0, 255, 0.4);
+  cursor: all-scroll;
+}
+
+#root {
+  user-select: none;
+  background-color: #06060e;
+  color: rgba(255, 255, 255, 0.85);
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+.app {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+  height: 100%;
+}
+
+.background-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 400vh;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(50px, 1fr));
+  gap: 2px;
+  z-index: 0;
+}
+
+.background-bg div {
+  background-color: #06060e;
+  border: 1px solid rgba(255, 255, 255, 0.02);
+  box-shadow: 0px 0px 1px rgba(0, 255, 4, 0);
+  transition: 1s ease;
+  border-radius: 5px;
+}
+
+.background-bg div:hover {
+  transition: box-shadow 0.2s;
+  border: 1px solid rgba(111, 0, 255, 0.3);
+  box-shadow: 0px 0px 8px rgba(111, 0, 255, 0.3);
+}
+
+.background-bg div.clicked {
+  background-color: rgba(179, 0, 255, 0.5);
+}
+
+.portfolio-header {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  margin-bottom: 2em;
+  padding-top: 60px;
+  z-index: 1;
+  flex: 1;
+}
+
+.header-container {
+  margin-right: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+}
+
+.portfolio-header img {
+  border-radius: 50%;
+  border: 2px solid rgba(5, 71, 137, 0.931);
+  margin-top: 12px;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.links a {
+  text-decoration: none;
+  transform: translateY(4px);
+  color: white;
+  margin-top: 2px;
+  font-size: 1.4em;
+  font-weight: 600;
+  transition: 0.3s ease;
+  pointer-events: initial;
+}
+
+.links a:hover {
+  color: rgba(179, 0, 255, 0.8);
+  transform: translateY(-1px);
+}
+
+section{
+  margin: 0;
+  padding: 0;
+}
+
+hr {
+  width: 420px;
+  margin-bottom: 20px;
+  color: white;
+  border: 1px solid white;
+}
+
+h1 {
+  font-size: 2.2em;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 2.6em;
+  margin-bottom: 0.8em;
+  max-width: 700px;
+}
+
+h3{
+  font-size: 2.2em;
+  margin-bottom: 20px;
+}
+
+h4{
+  font-size: 1.4em;
+  padding-bottom: 16px;
+}
+
+p {  
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+span {
+  color: rgb(32, 84, 215);
+  text-shadow: 1px 1px 5px rgba(5, 108, 210, 0.2);
+}
+
+.projects-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.projects {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 26px;
+}
+
+.project {
+  padding: 10px;
+  background-color: rgba(126, 126, 126, 0.015);
+  border: 2px solid rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  text-align: center;
+  pointer-events: initial;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.project:hover{
+  transform: scale(1.1);
+  border: 2px solid rgba(179, 0, 255, 0.3);
+  box-shadow: 0px 0px 10px rgba(179, 0, 255, 0.3);
+}
+
+.project h1{
+  font-size: 1.4em;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.project img{
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  }
+
+.project h2{
+  font-size: 1em;
+  font-weight: 500;
+  margin: 0 auto;
+}
+
+.react-icon {
+  bottom: 10px;
+  right: 10px;
+  width: 30px;
+}
+
+.react-icon img {
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 768px) { 
+
+  .portfolio-header{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    }
+
+  .header-container {
+    margin-right: 0;
+  }
+
+  h1, h2, h3, h4 {
+    font-size: 1.5em; /* Ajustar el tamaño de fuente en pantallas pequeñas */
+    text-align: center;
+  }
+
+  .links a {
+    font-size: 1.2em; /* Ajustar el tamaño de los enlaces */
+  }
+
+  .projects {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Ajustar columnas para pantallas más pequeñas */
+  }
+}
+
+@media (max-width: 480px) {
+
+  .header-container{
+    margin: 0 auto;
+  }
+
+  .header-container img{
+    width: 200px;
+  }
+
+  .header-container p{
+    margin-top: 10px;
+  }
+
+  .app{
+    max-width: 480px;
+  }
+
+  .portfolio-header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 340px;
+    margin: 0 auto;
+  }
+
+  hr{
+    display: flex;
+    width: 60%;
+    margin: 20px auto;
+  }
+
+  h1 {
+    font-size: 1.4em; /* Ajustar el tamaño de fuente aún más en pantallas muy pequeñas */
+  }
+
+  h2{
+    font-size: 1.4em;
+  }
+
+  h3{
+    font-size: 1.3em;
+  }
+
+  h4{
+    font-size: 1.2em;
+  }
+
+  .links{
+    margin-block: 10px;
+  }
+
+  .links a {
+    font-size: 1em; /* Ajustar aún más el tamaño de los enlaces */
+  }
+
+  .projects {
+    grid-template-columns: 1fr; /* Mostrar una columna en pantallas muy pequeñas */
+  }
+
+  .projects-container{
+    margin-top: 40px;
+  }
+
+  .project{
+    max-width: 320px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .project h1{
+    font-size: 1.2em;
+    text-align: center;
+    margin-block: 10px;
+  }
+
+  .project img{
+    width: 90%;
+  }
+
+  .react-icon {
+    width: 24px;
+    display: flex;
+    padding-inline: 20px;
+  }
+    
+  .react-icon img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .portfolio-header {
+    flex-direction: column; /* Apilar elementos verticalmente */
+    align-items: center; /* Centrar elementos */
+  }
+}
