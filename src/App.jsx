@@ -213,8 +213,10 @@ function App() {
           <div className="projects">
   {projects.map((project) => (
     <a href={project.link} target="_blank" rel="noopener noreferrer" key={project.id} className="project">
+      
       <h1>{project.name}</h1>
       <div className="img-container">
+        
         <img src={project.img} alt={project.name} />
       </div>
       <h2>{project.description}</h2>
@@ -226,14 +228,16 @@ function App() {
         <section className=''>
           <div className='projects-container '>
             <h4>Stack</h4>
-            <div className='skills'>
+            <div className='skills stack-container'>
               {specialization.map((item) => (
-                <li key={item.id}>
+                <li className='stack' key={item.id}>
+                  <img className='open-icon' src="https://img.icons8.com/fluent-systems-regular/200/FFFFFF/external-link.png" alt="" />
                 <img src={item.img} alt={item.name} />
                 <span className='skills-name'>
                   <span className='first-letter'>{item.name.charAt(0)}</span>
                   {item.name.slice(1)}
                 </span>
+                
               </li>
               ))}
             </div>
@@ -242,7 +246,7 @@ function App() {
           <h4>Skills</h4>
             <div className='skills'>
               {otherSkills.map((item) => (
-                <li key={item.id}><img src={item.img} alt={item.name} /><span className='skills-name-not-color'>{item.name}</span></li>
+                <li className='fon' key={item.id}><img src={item.img} alt={item.name} /><span className='skills-name-not-color'>{item.name}</span></li>
               ))}
             </div>
           </div>
@@ -250,9 +254,10 @@ function App() {
         <section>
           <div className='projects-container'>
             <h3>A <span>R</span>upture </h3>
-            <h4>
-              
-            </h4>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. A quas minus architecto, nesciunt alias saepe pariatur placeat facilis praesentium. Quae doloribus mollitia vel delectus aspernatur fuga nesciunt tenetur, pariatur dolorum?
+              lorem
+            </p>
             <div className="projects">
   {ruptureProjects.map((project) => (
     <a href={project.link} target="_blank" rel="noopener noreferrer" key={project.id} className="project">
@@ -264,6 +269,7 @@ function App() {
     </a>
   ))}
 </div>
+ 
           </div>
           <ContactForm/>
         </section>

@@ -179,7 +179,7 @@ span {
 
 .project {
   padding: 10px;
-  background-color: rgba(126, 126, 126, 0.015);
+  background-color: rgba(126, 126, 126, 0.02);
   border: 2px solid rgba(255, 255, 255, 0.05);
   border-radius: 10px;
   text-align: center;
@@ -216,12 +216,44 @@ span {
   font-weight: 500;
   margin: 0 auto;
 }
+
 .skills{
   margin-top: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 40px;
+}
+
+.skills .stack{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  aspect-ratio: 2/1;
+  border: 2px solid rgba(255, 255, 255, 0.05);
+  background-color: rgba(126, 126, 126, 0.02);
+  border-radius: 10px;
+  padding: 10px;
+  pointer-events: all;
+  transition: .2s ease;
+}
+
+.stack:hover{
+  border: 2px solid rgba(179, 0, 255, 0.3);
+  box-shadow: 0px 0px 10px rgba(179, 0, 255, 0.3);
+  cursor: pointer;
+  scale: 1.1;
+}
+
+.open-icon{
+  position: absolute;
+  transform: translateX(90px) translateY(-40px);
+  width: 10px;
+  height: 20px;
+  opacity: 20%;
+  
 }
 
 .skills li{
@@ -229,7 +261,14 @@ span {
   flex-direction: column;
   align-items: center;
   width: 70px;
+  padding: 10px;
+  list-style: none;
 }
+
+.fon{
+  list-style: none;
+}
+
 .skills-name-not-color,
 .skills-name{
   display: flex;
@@ -259,58 +298,73 @@ span {
   }
 }
 
+
 .form-contact {
-  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 500px;
+  width: 100%;
+  background-color: rgba(126, 126, 126, 0.05);
   padding: 20px;
-  background-color: rgba(111, 0, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.05);
   border-radius: 10px;
-  max-width: 600px;
-  box-shadow: 0px 0px 10px rgba(111, 0, 255, 0.3);
-  z-index: 1;
+  text-align: left;
   pointer-events: initial;
 }
 
-.form-group {
-  margin-bottom: 15px;
-  
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 5px;
+.form-contact label {
   color: rgba(255, 255, 255, 0.9);
+  font-size: 1.2em;
+  font-weight: 500;
   display: flex;
   flex-direction: column;
+  gap: 5px;
 }
 
-.form-group input,
-.form-group textarea {
-  width: 100%;
+.form-contact input,
+.form-contact textarea {
   padding: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 5px;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  z-index: 1;
+  background-color: #06060e;
+  color: rgba(255, 255, 255, 0.85);
+  border: 2px solid rgba(111, 0, 255, 0.3);
+  border-radius: 6px;
+  font-size: 1em;
+  font-family: inherit;
+  outline: none;
+  resize: none;
+  transition: border 0.3s ease;
 }
 
-.form-group textarea {
-  resize: none; /* Para desativar o redimensionamento da área de texto */
-  height: 100px; /* Definindo uma altura fixa */
+.form-contact input:focus,
+.form-contact textarea:focus {
+  border-color: rgba(179, 0, 255, 0.4);
+  outline: none;
 }
 
-button {
-  padding: 10px 15px;
-  background-color: rgba(111, 0, 255, 0.7);
-  color: white;
+.form-contact button {
+  background-color: rgba(111, 0, 255, 0.3);
+  color: #fff;
+  font-size: 1.2em;
+  font-weight: 600;
+  padding: 10px;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease;
 }
 
-button:hover {
-  background-color: rgba(179, 0, 255, 0.8);
+.form-contact button:hover {
+  background-color: rgba(179, 0, 255, 0.4);
+}
+
+.form-contact p {
+  font-size: .8rem;
+  font-weight: 500;
+}
+
+.form-contact p[style*="color: red"] {
+  color: rgba(255, 0, 0, 0.8);
 }
 
 
@@ -342,13 +396,20 @@ button:hover {
   }
 
   .skills{
-    display: grid;
     grid-template-columns: repeat(3, 1fr); /* Tres columnas */
     gap: 40px;
     justify-items: center; /* Alinear items al centro horizontalmente */
     width: 100%;
     max-width: 400px;
     margin: 0 auto;
+  }
+
+  .stack-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
   }
 }
 
@@ -363,6 +424,23 @@ button:hover {
       width: 100%;
       max-width: 300px;
       margin: 0 auto;
+  }
+
+  .skills .stack{
+    display: flex;
+    width: 132px;
+  }
+  .open-icon{
+    transform: translateX(60px) translateY(-30px);
+    height: 15px;
+    opacity: 50%;
+  }
+
+  .stack-container{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    align-items: center;
+    gap: 10px;
   }
 
   .header-container{
@@ -405,11 +483,21 @@ button:hover {
   }
 
   h3{
-    font-size: 1.3em;
+    font-size: 1.4em;
   }
 
   h4{
-    font-size: 1.2em;
+    font-size: 1.1em;
+  }
+
+  p{
+    max-width: 300px;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+
+  .form-contact label{
+    font-size: 1rem;
   }
 
   .links{
@@ -460,5 +548,10 @@ button:hover {
   .portfolio-header {
     flex-direction: column; /* Apilar elementos verticalmente */
     align-items: center; /* Centrar elementos */
+  }
+
+  .form-contact{
+    width: 100%;
+    max-width: 280px;
   }
 }

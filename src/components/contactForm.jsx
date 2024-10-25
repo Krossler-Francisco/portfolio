@@ -42,6 +42,8 @@ export default function ContactForm() {
   };
 
   return (
+    <section className='projects-container'>
+      <h3>Contact <span>me</span></h3>
     <form className='form-contact' onSubmit={handleSubmit}>
       <div>
         <label>
@@ -82,5 +84,6 @@ export default function ContactForm() {
       {successMessage && <p>{successMessage}</p>}
       {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
     </form>
+    </section>
   );
 }
