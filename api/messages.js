@@ -1,20 +1,34 @@
-import { open } from 'sqlite';
-import sqlite3 from 'sqlite3';
-import path from 'path';
+import mongoose from 'mongoose';
 
-// Função para abrir a conexão com o banco de dados
-const dbPromise = open({
-  filename: path.join(process.cwd(), 'db.sqlite'), // Local do banco de dados
-  driver: sqlite3.Database,
+// Conexão com o MongoDB
+const mongoUri = 'mongodb+srv://krossler:krossler123@react-fullstack.tvrikmx.mongodb.net/?retryWrites=true&w=majority&appName=react-fullstack';
+
+// Define o modelo da mensagem
+const messageSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  email: { type: String, required: true },
+  message: { type: String, required: true }
 });
+
+const Message = mongoose.model('Message', messageSchema);
+
+// Função para conectar ao MongoDB
+async function connectToDatabase() {
+  if (mongoose.connection.readyState === 0) {
+    await mongoose.connect(mongoUri, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+  }
+}
 
 export default async function handler(req, res) {
   if (req.method === 'GET') {
     try {
-      const db = await dbPromise; // Aguarda a conexão com o banco de dados
+      await connectToDatabase(); // Conecta ao MongoDB
 
       // Consulta as mensagens do banco de dados
-      const rows = await db.all('SELECT * FROM messages');
+      const rows = await Message.find({}); // Recupera todas as mensagens
 
       // Retorna as mensagens em formato JSON
       res.status(200).json(rows);
