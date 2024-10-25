@@ -222,7 +222,7 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 40px;
+  gap: 38px;
 }
 
 .skills .stack{
@@ -495,7 +495,7 @@ span {
   }
 
   p{
-    max-width: 300px;
+    max-width: 310px;
     text-align: center;
     font-size: 0.9rem;
   }
