@@ -1,24 +1,25 @@
-import sqlite3 from 'sqlite3';
-import { open } from 'sqlite';
-import path from 'path';
+import mongoose from 'mongoose';
 
-// Abre a conexão com o banco de dados SQLite
-const dbPromise = open({
-  filename: path.join(process.cwd(), 'db.sqlite'), // Local do banco de dados
-  driver: sqlite3.Database,
+// Conexão com o MongoDB
+const mongoUri = 'mongodb+srv://krossler:krossler123@react-fullstack.tvrikmx.mongodb.net/?retryWrites=true&w=majority&appName=react-fullstack';
+
+// Define o modelo da mensagem
+const messageSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  email: { type: String, required: true },
+  message: { type: String, required: true }
 });
 
-// Função para garantir que a tabela exista
-async function ensureTableExists(db) {
-  // Cria a tabela 'messages' se não existir
-  await db.exec(`
-    CREATE TABLE IF NOT EXISTS messages (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      name TEXT NOT NULL,
-      email TEXT NOT NULL,
-      message TEXT NOT NULL
-    )
-  `);
+const Message = mongoose.model('Message', messageSchema);
+
+// Função para conectar ao MongoDB
+async function connectToDatabase() {
+  if (mongoose.connection.readyState === 0) {
+    await mongoose.connect(mongoUri, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+  }
 }
 
 export default async function handler(req, res) {
@@ -35,13 +36,11 @@ export default async function handler(req, res) {
     }
 
     try {
-      const db = await dbPromise; // Aguarda a conexão com o banco de dados
+      await connectToDatabase(); // Conecta ao MongoDB
 
-      // Garante que a tabela existe
-      await ensureTableExists(db);
-
-      // Insere a nova mensagem na tabela
-      await db.run('INSERT INTO messages (name, email, message) VALUES (?, ?, ?)', [name, email, message]);
+      // Insere a nova mensagem na coleção
+      const newMessage = new Message({ name, email, message });
+      await newMessage.save();
 
       const responseMessage = { message: 'Formulário enviado com sucesso!' };
       console.log('Resposta:', responseMessage);
