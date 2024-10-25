@@ -24,14 +24,17 @@ export default function ContactForm() {
         body: JSON.stringify(formData),
       });
   
+      const textResponse = await response.text(); // Capture a resposta como texto
+      console.log('Resposta do servidor:', textResponse); // Log da resposta como texto
+  
       // Verifique se a resposta está ok
       if (!response.ok) {
-        const errorData = await response.json();
+        const errorData = JSON.parse(textResponse); // Tente analisar o JSON
         throw new Error(errorData.error || 'Erro ao enviar o formulário.');
       }
   
-      // Aqui, verifique se a resposta contém um corpo
-      const data = await response.json();
+      // Aqui, verifique se a resposta contém um corpo JSON
+      const data = JSON.parse(textResponse); // Parse o JSON
       setSuccessMessage(data.message);
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {
