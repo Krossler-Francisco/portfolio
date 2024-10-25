@@ -1,14 +1,18 @@
-import { Low, JSONFile } from 'lowdb';
-import path from 'path';
+// api/messages.js
+import db from './database.js';
 
-const file = path.join(process.cwd(), 'db.json');
-const adapter = new JSONFile(file);
-const db = new Low(adapter);
-
-export default async function handler(req, res) {
+export default function handler(req, res) {
   if (req.method === 'GET') {
-    await db.read();
-    res.status(200).json(db.data.messages);
+    // Consulta as mensagens do banco de dados
+    db.all('SELECT * FROM messages', [], (err, rows) => {
+      if (err) {
+        console.error(err.message);
+        return res.status(500).json({ error: 'Erro ao buscar mensagens.' });
+      }
+      
+      // Retorna as mensagens em formato JSON
+      res.status(200).json(rows);
+    });
   } else {
     res.status(405).json({ error: 'Método não permitido' });
   }
