@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
+
   const myProjects = [
     {
       id: 1,
@@ -33,6 +34,75 @@ function App() {
     },
   ];
 
+  const ruptureProjects = [
+    {
+      id: 1,
+      name: 'Religare Project',
+      technologies: 'React',
+      description: 'Project 1 description',
+      img: './projetoreligare.png'
+    },
+    {
+      id: 2,
+      name: 'Weather App',
+      technologies: 'React',
+      description: 'Project 2 description',
+      img: './civetta.jpeg'
+    }
+  ];
+
+  const specialization = [
+    {
+      id: 1,
+      name: 'MongoDB',
+      img: 'https://seeklogo.com/images/M/mongodb-logo-D13D67C930-seeklogo.com.png'
+    },
+    {
+      id: 2,
+      name: 'Express',
+      img: 'https://ajeetchaulagain.com/static/7cb4af597964b0911fe71cb2f8148d64/87351/express-js.png'
+    },
+    {
+      id: 3,
+      name: 'React',
+      img: 'https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png'
+    },
+    {
+      id: 4,
+      name: 'Node',
+      img: 'https://static-00.iconduck.com/assets.00/node-js-icon-454x512-nztofx17.png'
+    },
+  ];
+
+  const otherSkills = [
+    {
+      id: 5,
+      name: 'Git',
+      img: 'https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png'
+    },
+    
+    {
+      id: 6,
+      name: 'GitHub',
+      img: 'https://img.icons8.com/m_sharp/200/FFFFFF/github.png'
+    },
+    {
+      id: 8,
+      name: 'Figma',
+      img: 'https://cdn4.iconfinder.com/data/icons/logos-brands-in-colors/3000/figma-logo-512.png'
+    },
+    {
+      id: 9,
+      name: 'Sass',
+      img: 'https://icons.veryicon.com/png/o/business/vscode-program-item-icon/sass-5.png'
+    },
+    {
+      id: 7,
+      name: 'Idx',
+      img: 'https://developers.google.com/static/idx/images/icon-192.png?hl=es-419'
+    }
+  ]
+    
   const [projects, setProjects] = useState([]);
   const [clickedSquares, setClickedSquares] = useState({});
 
@@ -50,6 +120,26 @@ function App() {
     }, 100);
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = {
+      name: e.target.name.value,
+      email: e.target.email.value,
+      message: e.target.message.value,
+    };
+  
+    const response = await fetch('http://localhost:3000/submit-form', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    });
+  
+    const result = await response.json();
+    console.log(result);
+  };
+
   useEffect(() => {
     setProjects(myProjects);
   }, []);
@@ -57,7 +147,7 @@ function App() {
   return (
     <>
       <div className="background-bg">
-        {Array.from({ length: 360 }).map((_, i) => (
+        {Array.from({ length: 600 }).map((_, i) => (
           <div
             key={i}
             className={clickedSquares[i] ? 'clicked' : ''}
@@ -68,7 +158,7 @@ function App() {
       <div className='app'>
         <header className="portfolio-header">
           <div className="header-container">
-            <img width={240} src="./public/foto.jpg" alt="My image" />
+            <img width={240} src="./foto.jpg" alt="My image" />
             <p>Links</p>
             <div className="links">
               <a href="#">
@@ -147,28 +237,61 @@ function App() {
         <img src={project.img} alt={project.name} />
       </div>
       <h2>{project.description}</h2>
-      <div className="react-icon">
-          <img src="https://seeklogo.com/images/R/react-logo-65B7CD91B5-seeklogo.com.png" alt="React Icon" />
-        </div>
     </a>
   ))}
 </div>
 
-        </section>
-        <section>
+        </section >
+        <section className=''>
+          <div className='projects-container '>
+            <h4>Stack</h4>
+            <div className='skills'>
+              {specialization.map((item) => (
+                <li key={item.id}>
+                <img src={item.img} alt={item.name} />
+                <span className='skills-name'>
+                  <span className='first-letter'>{item.name.charAt(0)}</span>
+                  {item.name.slice(1)}
+                </span>
+              </li>
+              ))}
+            </div>
+          </div>
           <div className='projects-container'>
-            <h4>Skills</h4>
-            <div>
-              <strong>MongoDB</strong>
-              <strong>Express</strong>
-              <strong>ReactJs</strong>
-              <strong>NodeJs</strong>
+          <h4>Skills</h4>
+            <div className='skills'>
+              {otherSkills.map((item) => (
+                <li key={item.id}><img src={item.img} alt={item.name} /><span className='skills-name-not-color'>{item.name}</span></li>
+              ))}
             </div>
           </div>
         </section>
         <section>
           <div className='projects-container'>
-            <h4>Experience</h4>
+            <h3>A <span>R</span>upture </h3>
+            <h4>
+              
+            </h4>
+            <div className="projects">
+  {ruptureProjects.map((project) => (
+    <a href={project.link} target="_blank" rel="noopener noreferrer" key={project.id} className="project">
+      <h1>{project.name}</h1>
+      <div className="img-container">
+        <img src={project.img} alt={project.name} />
+      </div>
+      <h2>{project.description}</h2>
+    </a>
+  ))}
+</div>
+          </div>
+        </section>
+        <section>
+          <div className='form-contact'>
+            <h3>Contact</h3>
+              <form action="">
+
+              </form>
+
           </div>
         </section>
       </div>

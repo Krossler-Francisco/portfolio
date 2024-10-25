@@ -2,16 +2,23 @@
   "name": "myapp",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://rupture-project.github.io/portfolio",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "body-parser": "^1.20.3",
+    "express": "^4.21.1",
+    "gh-pages": "^6.2.0",
+    "lowdb": "^7.0.1",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "vercel": "^37.12.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
