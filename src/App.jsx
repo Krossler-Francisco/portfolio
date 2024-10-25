@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import ContactForm from './components/contactForm';
 
 function App() {
 
@@ -118,26 +119,6 @@ function App() {
         [index]: false,
       }));
     }, 100);
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const formData = {
-      name: e.target.name.value,
-      email: e.target.email.value,
-      message: e.target.message.value,
-    };
-  
-    const response = await fetch('http://localhost:3000/submit-form', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    });
-  
-    const result = await response.json();
-    console.log(result);
   };
 
   useEffect(() => {
@@ -284,16 +265,9 @@ function App() {
   ))}
 </div>
           </div>
+          <ContactForm/>
         </section>
-        <section>
-          <div className='form-contact'>
-            <h3>Contact</h3>
-              <form action="">
-
-              </form>
-
-          </div>
-        </section>
+          
       </div>
     </>
   );
