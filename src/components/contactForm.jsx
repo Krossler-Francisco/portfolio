@@ -46,6 +46,7 @@ export default function ContactForm() {
       <h3>Contact <span>me</span></h3>
     <form className='form-contact' onSubmit={handleSubmit}>
       <div>
+        <div>
         <label>
           Nome:
           <input
@@ -69,7 +70,9 @@ export default function ContactForm() {
           />
         </label>
       </div>
-      <div>
+      </div>
+
+      <div className='form-div'>
         <label>
           Mensagem:
           <textarea
@@ -79,8 +82,8 @@ export default function ContactForm() {
             required
           />
         </label>
+        <button type="submit">Enviar</button>
       </div>
-      <button type="submit">Enviar</button>
       {successMessage && <p>{successMessage}</p>}
       {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
     </form>

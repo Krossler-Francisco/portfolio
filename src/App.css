@@ -63,11 +63,11 @@
 .background-bg div:hover {
   transition: box-shadow 0.2s;
   border: 1px solid rgba(111, 0, 255, 0.3);
-  box-shadow: 0px 0px 8px rgba(111, 0, 255, 0.3);
+  box-shadow: 0px 0px 2px rgba(111, 0, 255, 0.5);
 }
 
 .background-bg div.clicked {
-  background-color: rgba(179, 0, 255, 0.5);
+  background-color: rgba(111, 0, 255, 0.5);
 }
 
 .portfolio-header {
@@ -114,8 +114,8 @@
 }
 
 .links a:hover {
-  color: rgba(179, 0, 255, 0.8);
-  transform: translateY(-1px);
+  color: rgba(111, 0, 255, 0.5);
+  transform: translateY(-2px);
 }
 
 section{
@@ -190,8 +190,8 @@ span {
 
 .project:hover{
   transform: scale(1.1);
-  border: 2px solid rgba(179, 0, 255, 0.3);
-  box-shadow: 0px 0px 10px rgba(179, 0, 255, 0.3);
+  border: 2px solid rgba(111, 0, 255, 0.5);
+  box-shadow: 0px 0px 10px rgba(111, 0, 255, 0.5);
 }
 
 .project h1{
@@ -241,8 +241,8 @@ span {
 }
 
 .stack:hover{
-  border: 2px solid rgba(179, 0, 255, 0.3);
-  box-shadow: 0px 0px 10px rgba(179, 0, 255, 0.3);
+  border: 2px solid rgba(111, 0, 255, 0.5);
+  box-shadow: 0px 0px 10px rgba(111, 0, 255, 0.5);
   cursor: pointer;
   scale: 1.1;
 }
@@ -300,10 +300,10 @@ span {
 
 
 .form-contact {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 20px;
-  max-width: 500px;
+  max-width: 956px;
   width: 100%;
   background-color: rgba(126, 126, 126, 0.05);
   padding: 20px;
@@ -311,6 +311,7 @@ span {
   border-radius: 10px;
   text-align: left;
   pointer-events: initial;
+  margin-bottom: 100px;
 }
 
 .form-contact label {
@@ -320,6 +321,12 @@ span {
   display: flex;
   flex-direction: column;
   gap: 5px;
+}
+
+.form-contact .form-div{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .form-contact input,
@@ -347,7 +354,7 @@ span {
   color: #fff;
   font-size: 1.2em;
   font-weight: 600;
-  padding: 10px;
+  padding: 13px;
   border: none;
   border-radius: 6px;
   cursor: pointer;
@@ -360,7 +367,9 @@ span {
 
 .form-contact p {
   font-size: .8rem;
-  font-weight: 500;
+  font-weight: 400;
+  padding: 0;
+  margin: 0;
 }
 
 .form-contact p[style*="color: red"] {
@@ -410,6 +419,17 @@ span {
     align-items: center;
     justify-content: center;
     gap: 10px;
+  }
+
+  .form-contact{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 100px;
+    gap: 0px;
+  }
+
+  .form-contact textarea{
+    height: 80px;
   }
 }
 
@@ -504,6 +524,15 @@ span {
     font-size: 1rem;
   }
 
+  .form-contact input,
+  .form-contact textarea{
+    font-size: .9rem;
+  }
+
+  .form-contact button{
+    font-size: 1rem;
+  }
+
   .links{
     margin-block: 10px;
   }
@@ -538,16 +567,14 @@ span {
     width: 90%;
   }
 
-  .react-icon {
-    width: 24px;
-    display: flex;
-    padding-inline: 20px;
+  .skills{
+    gap: 20px;
   }
-    
-  .react-icon img {
-    width: 100%;
-    height: 100%;
+
+  .stack-container{
+    gap: 14px;
   }
+
 
   .portfolio-header {
     flex-direction: column; /* Apilar elementos verticalmente */
