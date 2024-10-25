@@ -2,10 +2,18 @@
     "version": 2,
     "builds": [
       { "src": "api/*.js", "use": "@vercel/node" },
-      { "src": "src/**/*", "use": "@vercel/static-build", "config": { "distDir": "vite build" } }
+      { "src": "package.json", "use": "@vercel/static-build" }
     ],
     "routes": [
       { "src": "/api/submit-form", "dest": "api/submit-form.js" },
       { "src": "/api/messages", "dest": "api/messages.js" }
-    ]
+    ],
+    "build": {
+      "env": {
+        "NODE_ENV": "production"
+      },
+      "static": {
+        "output": "dist"
+      }
+    }
   }
