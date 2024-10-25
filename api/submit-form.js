@@ -15,14 +15,19 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Todos os campos são obrigatórios.' });
     }
 
-    await db.read();
-    db.data ||= { messages: [] };
-    db.data.messages.push({ id: Date.now(), name, email, message });
-    await db.write();
-
-    const responseMessage = { message: 'Formulário enviado com sucesso!' };
-    console.log('Resposta:', responseMessage); // Log da resposta
-    return res.status(201).json(responseMessage);
+    try {
+      await db.read();
+      db.data ||= { messages: [] };
+      db.data.messages.push({ id: Date.now(), name, email, message });
+      await db.write();
+      
+      const responseMessage = { message: 'Formulário enviado com sucesso!' };
+      console.log('Resposta:', responseMessage);
+      return res.status(201).json(responseMessage);
+    } catch (error) {
+      console.error('Erro ao salvar na base de dados:', error);
+      return res.status(500).json({ error: 'Erro ao salvar a mensagem.' });
+    }
   } else {
     console.log('Método não permitido');
     return res.status(405).json({ error: 'Método não permitido' });
