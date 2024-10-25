@@ -1,25 +1,25 @@
-// api/database.js
 import sqlite3 from 'sqlite3';
+import { open } from 'sqlite';
+import path from 'path';
 
-// Criação do banco de dados (se não existir)
-const db = new sqlite3.Database('./db.sqlite', (err) => {
-  if (err) {
-    console.error(err.message);
-  } else {
-    console.log('Conectado ao banco de dados SQLite.');
-  }
-});
+// Função para criar a tabela messages
+async function createTable() {
+  const db = await open({
+    filename: path.join(process.cwd(), 'db.sqlite'), // Local do banco de dados
+    driver: sqlite3.Database,
+  });
 
-// Criação da tabela se não existir
-db.serialize(() => {
-  db.run(`
+  await db.exec(`
     CREATE TABLE IF NOT EXISTS messages (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       name TEXT NOT NULL,
       email TEXT NOT NULL,
-      message TEXT NOT NULL
+      message TEXT NOT NULL,
+      createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )
   `);
-});
 
-export default db;
+  await db.close();
+}
+
+createTable().catch(console.error);
