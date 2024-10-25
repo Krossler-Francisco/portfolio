@@ -8,6 +8,19 @@ const dbPromise = open({
   driver: sqlite3.Database,
 });
 
+// Função para garantir que a tabela exista
+async function ensureTableExists(db) {
+  // Cria a tabela 'messages' se não existir
+  await db.exec(`
+    CREATE TABLE IF NOT EXISTS messages (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      name TEXT NOT NULL,
+      email TEXT NOT NULL,
+      message TEXT NOT NULL
+    )
+  `);
+}
+
 export default async function handler(req, res) {
   console.log('Método:', req.method); // Log do método
 
@@ -23,6 +36,10 @@ export default async function handler(req, res) {
 
     try {
       const db = await dbPromise; // Aguarda a conexão com o banco de dados
+
+      // Garante que a tabela existe
+      await ensureTableExists(db);
+
       // Insere a nova mensagem na tabela
       await db.run('INSERT INTO messages (name, email, message) VALUES (?, ?, ?)', [name, email, message]);
 
