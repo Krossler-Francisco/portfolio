@@ -416,6 +416,10 @@ span {
 
 @media (max-width: 500px) {
 
+  .background-bg{
+    display: none;
+  }
+
   .skills{
     display: grid;
       grid-template-columns: repeat(3, 1fr); /* Tres columnas */
