@@ -11,7 +11,7 @@ function App() {
       technologies: 'React',
       description: 'A React web page for a social therapy project, allowing users to learn more about the initiative and connect with organizers through various communication options.',
       img: './projetoreligare.png',
-      linktopage: 'https://gangain.vercel.app/'
+      linktopage: 'https://krossler-francisco.github.io/projetoreligare/'
     },
     {
       id: 2,
@@ -19,7 +19,7 @@ function App() {
       technologies: 'React',
       description: 'A React-based project designed to attract customers to an e-commerce platform offering home products, showcasing a user-friendly interface and engaging features to boost conversions.',
       img: './gangain.jpg',
-      linktopage: 'https://krossler.github.io/projetoreligare/'
+      linktopage: 'https://gangain.vercel.app/'
     }
   ];
 
