@@ -186,6 +186,8 @@ span {
   pointer-events: initial;
   transition: 0.3s ease;
   cursor: pointer;
+  text-decoration: none;
+  color: white;
 }
 
 .project:hover{
@@ -214,7 +216,8 @@ span {
 .project h2{
   font-size: 1em;
   font-weight: 500;
-  margin: 0 auto;
+  margin: 0 auto 1rem auto;
+  padding-inline: 1rem;
 }
 
 .skills{
@@ -238,6 +241,7 @@ span {
   padding: 10px;
   pointer-events: all;
   transition: .2s ease;
+  text-decoration: none;
 }
 
 .stack:hover{
@@ -274,10 +278,11 @@ span {
   display: flex;
   color: rgba(255, 255, 255, 0.9);
   font-size: 0.9rem;
+  text-decoration: none;
 }
 
 .first-letter {
-  color: rgb(255, 255, 255);
+  color: rgb(196, 211, 255);
   margin-right: 1px;
   font-weight: 500;
   display: flex;
