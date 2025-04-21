@@ -16,6 +16,7 @@ html{
   border-radius: 5px;
   margin-top: 20px;
   z-index: 10002;
+  pointer-events: initial;
 }
 
 .message-btn:hover {
