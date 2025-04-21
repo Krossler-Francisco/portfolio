@@ -5,7 +5,6 @@ import ContactForm from './components/contactForm';
 import MessagesList from './components/MessagesList'; // Importe o novo componente MessagesList
 
 function App() {
-
   const myProjects = [
     {
       id: 1,
@@ -78,7 +77,7 @@ function App() {
       name: 'Idx',
       img: 'https://developers.google.com/static/idx/images/icon-192.png?hl=es-419'
     }
-  ]
+  ];
 
   const [projects, setProjects] = useState([]);
   const [clickedSquares, setClickedSquares] = useState({});
@@ -140,7 +139,14 @@ function App() {
             </p>
             <p>with expertise in scalable web and mobile applications from backend to frontend.</p>
           </div>
+          {/* Adicionando o botão de Link para "/messages" */}
+          <div>
+            <Link to="/messages">
+              <button className="message-btn">Go to Messages</button>
+            </Link>
+          </div>
         </header>
+
         <Routes>
           <Route path="/" element={
             <>
@@ -191,7 +197,7 @@ function App() {
               </section>
             </>
           } />
-          <Route path="/messages" element={<MessagesList />} /> {/* Nova rota */}
+          <Route path="/messages" element={<MessagesList />} />
         </Routes>
       </div>
     </Router>
