@@ -3,6 +3,8 @@
     max-width: 700px;
     margin: 0 auto;
     font-family: Arial, sans-serif;
+    height: 100vh;
+    background-color: black;
   }
   
   .messages-title {
